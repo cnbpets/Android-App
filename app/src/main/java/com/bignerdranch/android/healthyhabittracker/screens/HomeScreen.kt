@@ -16,7 +16,7 @@ fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Health Habit Tracker") }
+                title = { Text("Healthy Habit Tracker") }
             )
         }
     ) { padding ->
