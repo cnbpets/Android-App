@@ -16,7 +16,7 @@ fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Health Habit Tracker") }
+                title = { Text("Healthy Habit Tracker") }
             )
         }
     ) { padding ->
@@ -31,7 +31,7 @@ fun HomeScreen(navController: NavController) {
         ) {
 
             Text(
-                text = "Welcome to your habit tracker!",
+                text = "Track your healthy habits daily!",
                 style = MaterialTheme.typography.headlineSmall
             )
 
@@ -61,6 +61,7 @@ fun HomeScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(30.dp))
 
             Button(
+                modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     navController.navigate("addHabit")
                 }
@@ -71,6 +72,7 @@ fun HomeScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(10.dp))
 
             Button(
+                modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     navController.navigate("profile")
                 }
