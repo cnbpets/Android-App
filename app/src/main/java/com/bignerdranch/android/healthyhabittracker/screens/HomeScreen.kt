@@ -1,25 +1,28 @@
 package com.bignerdranch.android.healthyhabittracker.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
-    val habits = listOf(
-        "Drink Water - Daily",
-        "Exercise - 3x Weekly",
-        "Read Book - Nightly",
-        "Meditation - Morning"
-    )
+
+    val habits = remember {
+        mutableStateListOf(
+            "Drink Water - Daily",
+            "Exercise - 3x Weekly",
+            "Read Book - Nightly",
+            "Meditation - Morning"
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -66,20 +69,26 @@ fun HomeScreen(navController: NavController) {
                             .padding(vertical = 6.dp)
                     ) {
 
-                        Text(
-                            text = habit,
-                            modifier = Modifier.padding(16.dp)
-                        )
-                    }
-                }
-            }
-                Column(
-                    modifier = Modifier.padding(16.dp)
-                ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
 
-                    Text("• Drink Water - Daily")
-                    Text("• Exercise - 3x Weekly")
-                    Text("• Read Book - Nightly")
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Text(text = habit)
+
+                            Button(
+                                onClick = {
+                                    habits.remove(habit)
+                                }
+                            ) {
+                                Text("Delete")
+                            }
+                        }
+                    }
                 }
             }
 
@@ -106,3 +115,4 @@ fun HomeScreen(navController: NavController) {
             }
         }
     }
+}
