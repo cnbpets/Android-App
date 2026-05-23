@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable("addHabit") {
-                        AddHabitScreen()
+                        AddHabitScreen(navController)
                     }
 
                     composable("profile") {

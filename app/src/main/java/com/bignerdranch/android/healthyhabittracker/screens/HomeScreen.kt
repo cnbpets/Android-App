@@ -10,18 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.material3.ExperimentalMaterial3Api
+import com.bignerdranch.android.healthyhabittracker.data.SharedHabitData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
 
     val habits = remember {
-        mutableStateListOf(
-            "Drink Water - Daily",
-            "Exercise - 3x Weekly",
-            "Read Book - Nightly",
-            "Meditation - Morning"
-        )
+        SharedHabitData.habits
     }
 
     Scaffold(

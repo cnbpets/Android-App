@@ -6,27 +6,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.platform.LocalContext
-import androidx.room.Room
-import com.bignerdranch.android.healthyhabittracker.data.Habit
-import com.bignerdranch.android.healthyhabittracker.data.HabitDatabase
-import kotlinx.coroutines.launch
+import androidx.navigation.NavController
+import com.bignerdranch.android.healthyhabittracker.data.SharedHabitData
 
 @Composable
-fun AddHabitScreen() {
+fun AddHabitScreen(navController: NavController) {
 
     var title by remember { mutableStateOf("") }
     var frequency by remember { mutableStateOf("") }
-
-    val context = LocalContext.current
-
-    val database = Room.databaseBuilder(
-        context,
-        HabitDatabase::class.java,
-        "habit_database"
-    ).build()
-
-    val scope = rememberCoroutineScope()
 
     Column(
         modifier = Modifier
@@ -37,7 +24,10 @@ fun AddHabitScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text("Add Habit")
+        Text(
+            text = "Add New Habit",
+            style = MaterialTheme.typography.headlineSmall
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -58,19 +48,16 @@ fun AddHabitScreen() {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(
+            modifier = Modifier.fillMaxWidth(),
             onClick = {
 
-                scope.launch {
+                if (title.isNotBlank() && frequency.isNotBlank()) {
 
-                    val habit = Habit(
-                        title = title,
-                        frequency = frequency
+                    SharedHabitData.habits.add(
+                        "$title - $frequency"
                     )
 
-                    database.habitDao().insertHabit(habit)
-
-                    title = ""
-                    frequency = ""
+                    navController.navigate("home")
                 }
             }
         ) {
