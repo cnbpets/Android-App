@@ -74,7 +74,21 @@ fun HomeScreen(navController: NavController) {
                             verticalAlignment = Alignment.CenterVertically
                         ) {
 
-                            Text(text = habit)
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+
+                                Checkbox(
+                                    checked = habit.completed,
+
+                                    onCheckedChange = {
+
+                                        habit.completed = it
+                                    }
+                                )
+
+                                Text(text = habit.title)
+                            }
 
                             Button(
                                 onClick = {

@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bignerdranch.android.healthyhabittracker.data.SharedHabitData
+import com.bignerdranch.android.healthyhabittracker.data.HabitItem
 
 @Composable
 fun AddHabitScreen(navController: NavController) {
@@ -54,7 +55,10 @@ fun AddHabitScreen(navController: NavController) {
                 if (title.isNotBlank() && frequency.isNotBlank()) {
 
                     SharedHabitData.habits.add(
-                        "$title - $frequency"
+
+                        HabitItem(
+                            title = "$title - $frequency"
+                        )
                     )
 
                     navController.navigate("home")
