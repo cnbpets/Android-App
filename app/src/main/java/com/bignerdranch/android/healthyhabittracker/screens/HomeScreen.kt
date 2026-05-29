@@ -44,6 +44,14 @@ fun HomeScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
+            val completedCount = habits.count { it.completed }
+
+            Text(
+                text = "Completed Habits: $completedCount / ${habits.size}",
+                style = MaterialTheme.typography.titleMedium
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = "Today's Habits",
                 style = MaterialTheme.typography.titleMedium
