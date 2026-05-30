@@ -38,7 +38,7 @@ fun HomeScreen(navController: NavController) {
         ) {
 
             Text(
-                text = "Track your healthy habits daily!",
+                text = "Healthy Habit Tracker helps users build and maintain healthy daily routines by tracking habits and monitoring progress.",
                 style = MaterialTheme.typography.headlineSmall
             )
 
