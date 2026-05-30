@@ -10,6 +10,20 @@ object SharedHabitData {
 
         HabitItem(
             title = "Exercise - 3x Weekly"
+        ),
+                HabitItem(
+                title = "Read 20 Minutes - Daily"
+                ),
+
+        HabitItem(
+            title = "Walk - 3x Weekly"
+        ),
+        HabitItem(
+            title = "Stretch - Daily"
+        ),
+
+        HabitItem(
+            title = "Brush teeth - 2x Daily"
         )
     )
 }
