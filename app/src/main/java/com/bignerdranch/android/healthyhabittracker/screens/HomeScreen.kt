@@ -36,7 +36,27 @@ fun HomeScreen(navController: NavController) {
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
 
+                    Text(
+                        text = "Habit Progress",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+
+                    val completedCount = habits.count { it.completed }
+
+                    Text(
+                        text = "Completed: $completedCount / ${habits.size}"
+                    )
+                }
+            }
             Text(
                 text = "Healthy Habit Tracker helps users build and maintain healthy daily routines by tracking habits and monitoring progress.",
                 style = MaterialTheme.typography.headlineSmall
