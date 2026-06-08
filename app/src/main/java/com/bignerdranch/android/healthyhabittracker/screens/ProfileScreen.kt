@@ -44,6 +44,10 @@ fun ProfileScreen() {
                 Text("Habits Tracked: 4")
                 Text("Current Streak: 5 Days")
                 Text("Weekly Goal: Stay Consistent")
+
+                Text(
+                    text = "Database Status: Room database integration in progress."
+                )
             }
         }
 
