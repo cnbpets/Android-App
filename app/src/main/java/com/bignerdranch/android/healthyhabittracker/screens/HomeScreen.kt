@@ -62,8 +62,12 @@ fun HomeScreen(navController: NavController) {
                 }
             }
             Text(
-                text = "Healthy Habit Tracker helps users build and maintain healthy daily routines by tracking habits and monitoring progress.",
-                style = MaterialTheme.typography.headlineSmall
+                text = "Good Morning 👋",
+                style = MaterialTheme.typography.headlineMedium
+            )
+
+            Text(
+                text = "Stay consistent and build healthy habits."
             )
 
             Spacer(modifier = Modifier.height(20.dp))
