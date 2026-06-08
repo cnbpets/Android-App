@@ -15,6 +15,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CardDefaults
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -98,7 +100,13 @@ fun HomeScreen(navController: NavController) {
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 6.dp)
+                            .padding(vertical = 6.dp),
+
+                        shape = RoundedCornerShape(20.dp),
+
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 6.dp
+                        )
                     ) {
 
                         Row(
@@ -123,7 +131,18 @@ fun HomeScreen(navController: NavController) {
                                     }
                                 )
 
-                                Text(text = habit.title)
+                                Column {
+
+                                    Text(
+                                        text = habit.title,
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
+
+                                    Text(
+                                        text = "Healthy Habit",
+                                        style = MaterialTheme.typography.bodySmall
+                                    )
+                                }
                             }
 
                             Button(
