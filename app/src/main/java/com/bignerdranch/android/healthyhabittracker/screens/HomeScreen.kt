@@ -11,6 +11,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.material3.ExperimentalMaterial3Api
 import com.bignerdranch.android.healthyhabittracker.data.SharedHabitData
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.CheckCircle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -133,22 +137,20 @@ fun HomeScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(30.dp))
 
             Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    navController.navigate("addHabit")
-                }
+                onClick = { navController.navigate("addHabit") }
             ) {
+                Icon(Icons.Default.Add, contentDescription = null)
+                Spacer(modifier = Modifier.width(8.dp))
                 Text("Add Habit")
             }
 
             Spacer(modifier = Modifier.height(10.dp))
 
             Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    navController.navigate("profile")
-                }
+                onClick = { navController.navigate("profile") }
             ) {
+                Icon(Icons.Default.Person, contentDescription = null)
+                Spacer(modifier = Modifier.width(8.dp))
                 Text("Profile")
             }
         }
