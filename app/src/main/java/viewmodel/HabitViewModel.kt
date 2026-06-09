@@ -1,4 +1,7 @@
-package viewmodel
+package com.bignerdranch.android.healthyhabittracker.viewmodel
 
-class HabitViewModel {
+import androidx.lifecycle.ViewModel
+
+class HabitViewModel : ViewModel() {
+
 }
