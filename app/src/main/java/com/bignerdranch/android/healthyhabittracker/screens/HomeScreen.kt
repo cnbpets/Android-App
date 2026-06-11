@@ -18,6 +18,8 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import com.bignerdranch.android.healthyhabittracker.viewmodel.HabitViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,9 +28,9 @@ fun HomeScreen(
     viewModel: HabitViewModel
 ) {
 
-    val habits = remember {
-        SharedHabitData.habits
-    }
+    val habits by viewModel.habits.collectAsState(
+        initial = emptyList()
+    )
 
     Scaffold(
         topBar = {
@@ -124,10 +126,7 @@ fun HomeScreen(
                                 Checkbox(
                                     checked = habit.completed,
 
-                                    onCheckedChange = {
-
-                                        habit.completed = it
-                                    }
+                                    onCheckedChange = { }
                                 )
 
                                 Column {
@@ -146,7 +145,7 @@ fun HomeScreen(
 
                             Button(
                                 onClick = {
-                                    habits.remove(habit)
+                                    viewModel.deleteHabit(habit)
                                 }
                             ) {
                                 Text("Delete")
