@@ -93,7 +93,7 @@ fun ProfileScreen() {
         Spacer(modifier = Modifier.height(30.dp))
 
         Text(
-            text = "Database Status: Room database integration in progress."
+            text = "Database Status: Local storage enabled, Habit saved automatically, Room Database Connected"
         )
 
         Text(
