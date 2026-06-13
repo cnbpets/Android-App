@@ -29,6 +29,13 @@ class HabitViewModel(
         }
     }
 
+    fun updateHabit(habit: Habit) {
+
+        viewModelScope.launch {
+            repository.updateHabit(habit)
+        }
+    }
+
     fun deleteHabit(habit: Habit) {
 
         viewModelScope.launch {

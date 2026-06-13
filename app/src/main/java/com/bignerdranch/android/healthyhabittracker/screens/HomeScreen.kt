@@ -126,7 +126,14 @@ fun HomeScreen(
                                 Checkbox(
                                     checked = habit.completed,
 
-                                    onCheckedChange = { }
+                                    onCheckedChange = {
+
+                                        val updatedHabit = habit.copy(
+                                            completed = it
+                                        )
+
+                                        viewModel.updateHabit(updatedHabit)
+                                    }
                                 )
 
                                 Column {

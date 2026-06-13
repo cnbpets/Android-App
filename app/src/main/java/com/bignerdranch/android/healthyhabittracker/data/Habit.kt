@@ -13,5 +13,5 @@ data class Habit(
 
     val frequency: String,
 
-    val completed: Boolean = false
+    var completed: Boolean = false
 )
