@@ -14,12 +14,13 @@ import com.bignerdranch.android.healthyhabittracker.data.SharedHabitData
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import com.bignerdranch.android.healthyhabittracker.viewmodel.HabitViewModel
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.bignerdranch.android.healthyhabittracker.viewmodel.HealthTipViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,6 +28,9 @@ fun HomeScreen(
     navController: NavController,
     viewModel: HabitViewModel
 ) {
+    val healthTipViewModel: HealthTipViewModel = viewModel()
+
+    val healthTip by healthTipViewModel.tip.collectAsState()
 
     val habits by viewModel.habits.collectAsState(
         initial = emptyList()
@@ -69,6 +73,39 @@ fun HomeScreen(
                     )
                 }
             }
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+
+                shape = RoundedCornerShape(20.dp),
+
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 6.dp
+                )
+            ) {
+
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+
+                    Text(
+                        text = "💡 Daily Health Tip",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+
+                    Spacer(
+                        modifier = Modifier.height(8.dp)
+                    )
+
+                    Text(
+                        text =
+                            healthTip
+                    )
+                }
+            }
+
             Text(
                 text = "Good Morning 👋",
                 style = MaterialTheme.typography.headlineMedium
