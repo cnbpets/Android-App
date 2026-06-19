@@ -14,10 +14,24 @@ import com.bignerdranch.android.healthyhabittracker.data.HabitDatabaseProvider
 import com.bignerdranch.android.healthyhabittracker.data.HabitRepository
 import com.bignerdranch.android.healthyhabittracker.viewmodel.HabitViewModel
 import com.bignerdranch.android.healthyhabittracker.viewmodel.HabitViewModelFactory
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import java.util.concurrent.TimeUnit
+import com.bignerdranch.android.healthyhabittracker.worker.HabitReminderWorker
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val reminderRequest =
+            PeriodicWorkRequestBuilder<HabitReminderWorker>(
+                24,
+                TimeUnit.HOURS
+            ).build()
+
+
+        WorkManager.getInstance(this)
+            .enqueue(reminderRequest)
 
         setContent {
 
