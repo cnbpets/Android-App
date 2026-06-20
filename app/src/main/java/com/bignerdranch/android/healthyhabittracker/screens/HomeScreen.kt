@@ -180,7 +180,7 @@ fun HomeScreen(
                                     )
 
                                     Text(
-                                        text = "Healthy Habit",
+                                        text = habit.frequency,
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
